@@ -1,5 +1,5 @@
 
-         Text::Delimited - Delimited Text Processing Module - v 1.92
+         Text::Delimited - Delimited Text Processing Module - v 1.93
 
 ================================================================================
 SYNOPSIS:
@@ -138,7 +138,7 @@ AUTHORSHIP:
 ================================================================================
 
 
-    Text::Delimited v1.92 2004/04/02
+    Text::Delimited v1.93 2004/07/21
 
     (c) 2004, Phillip Pollard <bennie@cpan.org>
     Released under the Perl Artistic License
