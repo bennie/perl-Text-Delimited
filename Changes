@@ -1,5 +1,9 @@
 Revision history for Perl extension Text::Delimited.
 
+1.92  2004/04/02
+
+	Full copyright and license information.
+
 1.91  2004/01/15
 
 	Derived from HMS tool Util::TabFile (1.9 2003/11/05)

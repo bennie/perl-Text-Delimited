@@ -1,5 +1,5 @@
 
-         Text::Delimited - Delimited Text Processing Module - v 1.91
+         Text::Delimited - Delimited Text Processing Module - v 1.92
 
 ================================================================================
 SYNOPSIS:
@@ -137,12 +137,14 @@ EXPORTABLE METHODS:
 AUTHORSHIP:
 ================================================================================
 
-    Phil Pollard <bennie@cpan.org>
-    Released under GNU General Public License
 
-    Additional work by Kristina Davis <kdavis@hmsonline.com>
+    Text::Delimited v1.92 2004/04/02
+
+    (c) 2004, Phillip Pollard <bennie@cpan.org>
+    Released under the Perl Artistic License
+
+    Additional contributions by Kristina Davis <krd@menagerie.tf>
     Based upon the original module by Andrew Barnett <abarnett@hmsonline.com>
 
-    Derived from Util::TabFile 1.9 2003/11/05 17:53:24
+    Derived from Util::TabFile 1.9 2003/11/05
     With permission granted from Health Market Science, Inc.
-
