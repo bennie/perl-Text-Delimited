@@ -118,14 +118,16 @@ newline appended).
 
 =head1 AUTHORSHIP:
 
-  Phil Pollard <bennie@cpan.org>
-  Released under GNU General Public License
+    Text::Delimited v1.92 2004/04/02
 
-  Additional work by Kristina Davis <kdavis@hmsonline.com>
-  Based upon the original module by Andrew Barnett <abarnett@hmsonline.com>
+    (c) 2004, Phillip Pollard <bennie@cpan.org>
+    Released under the Perl Artistic License
 
-  Derived from Util::TabFile 1.9 2003/11/05 17:53:24
-  With permission granted from Health Market Science, Inc.
+    Additional contributions by Kristina Davis <krd@menagerie.tf>
+    Based upon the original module by Andrew Barnett <abarnett@hmsonline.com>
+
+    Derived from Util::TabFile 1.9 2003/11/05
+    With permission granted from Health Market Science, Inc.
 
 =cut
 
@@ -134,7 +136,7 @@ package Text::Delimited;
 use 5.006;
 use strict;
 
-our $VERSION = '1.91';
+our $VERSION = '1.92';
 
 ### Private mthods
 
