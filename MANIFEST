@@ -1,0 +1,8 @@
+Changes
+lib/Text/Delimited.pm
+Makefile.PL
+MANIFEST
+README
+t/01-load.t
+
+META.yml                                 Module meta-data (added by MakeMaker)
