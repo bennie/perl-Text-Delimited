@@ -1,5 +1,11 @@
 Revision history for Perl extension Text::Delimited.
 
+1.93  2004/07/21
+
+	Removed autovivification of the internal filehandle. Now using the 
+         Symbol::gensym() to be backwards compatible to earlier versions 
+         of Perl 5. Thanks to Shrinivas Potnuru for the bug report.
+
 1.92  2004/04/02
 
 	Full copyright and license information.
@@ -7,5 +13,7 @@ Revision history for Perl extension Text::Delimited.
 1.91  2004/01/15
 
 	Derived from HMS tool Util::TabFile (1.9 2003/11/05)
+
 	Support for changing delimiter added.
+
 	Module made to pass strict.

@@ -118,7 +118,7 @@ newline appended).
 
 =head1 AUTHORSHIP:
 
-    Text::Delimited v1.92 2004/04/02
+    Text::Delimited v1.93 2004/07/21
 
     (c) 2004, Phillip Pollard <bennie@cpan.org>
     Released under the Perl Artistic License
@@ -133,10 +133,12 @@ newline appended).
 
 package Text::Delimited;
 
+use Symbol;
+
 use 5.006;
 use strict;
 
-our $VERSION = '1.92';
+our $VERSION = '1.93';
 
 ### Private mthods
 
@@ -223,6 +225,7 @@ sub Open {
       $self->{FP} = $file || \*STDIN;
       $self->{FILENAME} = 'GLOB';
     } elsif ( -r $file ) {
+      $self->{FP} = gensym;
       open $self->{FP}, $file or die "Can't open the file $file\n";
       $self->{FILENAME} = $file;
     } else {
