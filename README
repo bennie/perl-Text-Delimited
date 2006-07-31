@@ -1,5 +1,5 @@
 
-         Text::Delimited - Delimited Text Processing Module - v 1.93
+         Text::Delimited - Delimited Text Processing Module - v 2.00
 
 ================================================================================
 SYNOPSIS:
@@ -34,19 +34,19 @@ USAGE:
     data from "COLUMN1" in that row. It then closes the file.
 
       my $file = new Text::Delimited;
-      $file->Delimiter('|');
-      $file->Open('infile.tab');
+      $file->delimiter('|');
+      $file->open('infile.txt');
 
-      my @header = $file->Fields;
+      my @header = $file->fields;
 
-      while ( my $row = $file->Read ) {
+      while ( my $row = $file->read ) {
         print $row->{COLUMN1}, "\n";
       }
 
-      $file->Close;
+      $file->close;
 
-    The Close() method is atuomatically called when the object passes out of
-    scope. However, you should not depend on this. Use Close() when
+    The close() method is atuomatically called when the object passes out of
+    scope. However, you should not depend on this. Use close() when
     approrpiate.
 
     Other informational methods are also available. They are listed blow:
@@ -55,25 +55,25 @@ USAGE:
 METHODS:
 ================================================================================
 
-    Close()
+    close()
 
     Closes the file or connection, and cleans up various bits.
 
-    Delimiter(delimiter)
+    delimiter(delimiter)
 
     Allows you to set the delimiter if a value is given. The default
     delimiter is a tab. Returns the delimiter.
 
-    Fields()
+    fields()
 
     Returns an array (or arrayref, depending on the requested context) with
     the column header fields in the order specified by the source file.
 
-    FileName()
+    filename()
 
     If Open was given a filename, this function will return that value.
 
-    LineNumber()
+    linenumber()
 
     This returns the line number of the last line read. If no calls to Read
     have been made, will be 0. After the first call to Read, this will
@@ -90,7 +90,7 @@ METHODS:
     duplicate names. That is, if your header row contains 2 columns named
     "NAME", one will be changed to NAME_1, the other to NAME_2.
 
-    Open([filename|filepointer], [enumerate])
+    open([filename|filepointer], [enumerate])
 
     Opens the given filename or globbed filehandle and reads the header
     line. Returns 0 if the operation failed. Returns the file object if
@@ -101,7 +101,7 @@ METHODS:
     duplicate names. That is, if your header row contains 2 columns named
     "NAME", one will be changed to NAME_1, the other to NAME_2.
 
-    Read()
+    read()
 
     Returns a hashref with the next record of data. The hash keys are
     determined by the header line.
@@ -114,7 +114,7 @@ METHODS:
 
     This method returns undef if there is no more data to be read.
 
-    setMode(encoding)
+    setmode(encoding)
 
     Set the given encoding scheme on the tabfile to allow for reading files
     encoded in standards other than ASCII.
@@ -138,10 +138,13 @@ AUTHORSHIP:
 ================================================================================
 
 
-    Text::Delimited v1.93 2004/07/21
+    Text::Delimited v2.00 2006/07/31
 
-    (c) 2004, Phillip Pollard <bennie@cpan.org>
+    (c) 2004-2006, Phillip Pollard <bennie@cpan.org>
     Released under the Perl Artistic License
+
+    I'd like to thank PetBlvd for sponsoring continued work on this module.
+    http://www.petblvd.com/
 
     Additional contributions by Kristina Davis <krd@menagerie.tf>
     Based upon the original module by Andrew Barnett <abarnett@hmsonline.com>

@@ -1,10 +1,25 @@
 Revision history for Perl extension Text::Delimited.
 
+2.00  2006/07/31
+
+	Provided non-capitalized method names to match Perl style as suggested
+         by CPAN rating comments. Historic "Java-style" method names still
+	 function.
+
+	Corrected POD and docs for new method names, version changes, other 
+	 grammatical errors and removed accidental references to TabFile.pm
+
+	Added initialization checks on exported methods to avoid superfluous
+	 warnings generated when -w is used.
+
+	Added credit to PetBlvd (http://www.petblvd.com) for the sponsorship
+	 of further development.
+
 1.93  2004/07/21
 
-	Removed autovivification of the internal filehandle. Now using the 
-         Symbol::gensym() to be backwards compatible to earlier versions 
-         of Perl 5. Thanks to Shrinivas Potnuru for the bug report.
+	Removed autovivification of the internal filehandle. Now using the
+	 Symbol::gensym() to be backwards compatible to earlier versions
+	 of Perl 5. Thanks to Shrinivas Potnuru for the bug report.
 
 1.92  2004/04/02
 
