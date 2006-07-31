@@ -20,44 +20,44 @@ called 'infile.txt', reads through every row and prints out the data from
 "COLUMN1" in that row. It then closes the file.
 
   my $file = new Text::Delimited;
-  $file->Delimiter('|');
-  $file->Open('infile.tab');
+  $file->delimiter('|');
+  $file->open('infile.txt');
 
-  my @header = $file->Fields;
+  my @header = $file->fields;
 
-  while ( my $row = $file->Read ) {
+  while ( my $row = $file->read ) {
     print $row->{COLUMN1}, "\n";
   }
 
-  $file->Close;
+  $file->close;
 
-The Close() method is atuomatically called when the object passes out of 
-scope. However, you should not depend on this. Use Close() when 
+The close() method is atuomatically called when the object passes out of 
+scope. However, you should not depend on this. Use close() when 
 approrpiate.
 
 Other informational methods are also available. They are listed blow:
 
 =head1 METHODS:
 
-=item Close()
+=item close()
 
 Closes the file or connection, and cleans up various bits.
 
-=item Delimiter(delimiter)
+=item delimiter(delimiter)
 
 Allows you to set the delimiter if a value is given. The default 
 delimiter is a tab. Returns the delimiter.
 
-=item Fields()
+=item fields()
 
 Returns an array (or arrayref, depending on the requested context) with 
 the column header fields in the order specified by the source file.
 
-=item FileName()
+=item filename()
 
-If Open was given a filename, this function will return that value.
+If open() was given a filename, this function will return that value.
 
-=item LineNumber()
+=item linenumber()
 
 This returns the line number of the last line read. If no calls to Read 
 have been made, will be 0. After the first call to Read, this will return 
@@ -70,21 +70,21 @@ a filename or a globbed filehandle. Files specified by filename must
 already exist.
 
 Can optionally take a second argument. If this argument evaluates to true,
-TabFile.pm will append a _NUM to the end of all fields with duplicate names.
+Text::Delimited will append a _NUM to the end of all fields with duplicate names.
 That is, if your header row contains 2 columns named "NAME", one will be 
 changed to NAME_1, the other to NAME_2.
 
-=item Open([filename|filepointer], [enumerate])
+=item open([filename|filepointer], [enumerate])
 
 Opens the given filename or globbed filehandle and reads the header line. 
 Returns 0 if the operation failed. Returns the file object if succeeds.
 
 Can optionally take a second argument. If this argument evaluates to true,
-TabFile.pm will append a _NUM to the end of all fields with duplicate names.
+Text::Delimited will append a _NUM to the end of all fields with duplicate names.
 That is, if your header row contains 2 columns named "NAME", one will be 
 changed to NAME_1, the other to NAME_2.
 
-=item Read()
+=item read()
 
 Returns a hashref with the next record of data. The hash keys are determined
 by the header line. 
@@ -97,7 +97,7 @@ __LINE__ is a string with the original tab-separated record.
 
 This method returns undef if there is no more data to be read.
 
-=item setMode(encoding)
+=item setmode(encoding)
 
 Set the given encoding scheme on the tabfile to allow for reading files
 encoded in standards other than ASCII.
@@ -107,21 +107,24 @@ encoded in standards other than ASCII.
 For convienience, the following methods are exportable. These are handy 
 for quickly writing output tab files.
 
-=item tj(@STUFF)
+=item d_join(@STUFF)
 
-Tab Join. Returns the given array as a string joined with tabs.
+Delimited Join. Returns the given array as a string joined with the current delimiter.
 
-=item tl(@STUFF)
+=item d_line(@STUFF)
 
-Tab Line. Returns the given array as a string joined with tabs (with 
-newline appended).
+Delimited Line. Returns the given array as a string joined with the current delimiter 
+and with newline appended.
 
 =head1 AUTHORSHIP:
 
-    Text::Delimited v1.93 2004/07/21
+    Text::Delimited v2.00 2006/06/31
 
-    (c) 2004, Phillip Pollard <bennie@cpan.org>
+    (c) 2004-2006, Phillip Pollard <bennie@cpan.org>
     Released under the Perl Artistic License
+
+    I'd like to thank PetBlvd for sponsoring continued work on this module.
+    http://www.petblvd.com/
 
     Additional contributions by Kristina Davis <krd@menagerie.tf>
     Based upon the original module by Andrew Barnett <abarnett@hmsonline.com>
@@ -138,7 +141,7 @@ use Symbol;
 use 5.006;
 use strict;
 
-our $VERSION = '1.93';
+our $VERSION = '2.00';
 
 ### Private mthods
 
@@ -159,6 +162,11 @@ sub _line {
 
 sub Close {
   my $self = shift @_;
+  return $self->close(@_);
+}
+
+sub close {
+  my $self = shift @_;
   close $self->{FP} if $self->{FP};
 
   $self->{CURRENT_DATA} = $self->{CURRENT_LINE} = $self->{FILENAME} = 
@@ -168,6 +176,11 @@ sub Close {
 }
 
 sub Delimiter {
+  my $self = shift @_;
+  return $self->delimiter(@_);
+}
+
+sub delimiter {
   my $self = shift @_;
   my $new  = shift @_;
 
@@ -182,14 +195,29 @@ sub Delimiter {
 
 sub Fields {
   my $self = shift @_;
+  return $self->fields(@_);
+}
+
+sub fields {
+  my $self = shift @_;
   return wantarray ? @{$self->{HDR}} : $self->{HDR};
 }
 
 sub FileName {
+  my $self = shift @_;
+  return $self->filename(@_);
+}
+
+sub filename {
   return $_[0]->{FILENAME};
 }
 
 sub LineNumber {
+  my $self = shift @_;
+  return $self->linenumber(@_);
+}
+
+sub linenumber {
   return $_[0]->{LINE_NUMBER};
 }
 
@@ -207,7 +235,7 @@ sub new {
 
   $self->_init;
 
-  my $status = $self->Open($file, $enumerate) if $file;
+  my $status = $self->open($file, $enumerate) if $file;
   
   return $self;
 }
@@ -215,6 +243,11 @@ sub new {
 sub _init { }
 
 sub Open {
+  my $self = shift @_;
+  return $self->open(@_);
+}
+
+sub open {
     my $self = shift @_;
     my $file = shift @_;
     my $enumerate = shift @_;
@@ -254,6 +287,11 @@ sub Open {
 
 sub Read {
   my $self = shift @_;
+  return $self->read(@_);
+}
+
+sub read {
+  my $self = shift @_;
   my $out  = {};
 
   my $data = $self->_line;
@@ -274,6 +312,11 @@ sub Read {
 
 sub setMode {
   my $self = shift @_;
+  return $self->setMode(@_);
+}
+
+sub setmode {
+  my $self = shift @_;
   my $mode = shift @_;
   return binmode $self->{FP}, $mode;
 }
@@ -283,18 +326,18 @@ sub setMode {
 sub d_join {
   if ( ref($_[0]) ) {
     my $self = shift @_;
-    return join($self->{DELIMITER},@_);
+    return join($self->{DELIMITER},map {defined($_)?$_:''} @_);
   } else {
-    return join("\t",@_);
+    return join("\t",map {defined($_)?$_:''} @_);
   }
 }
 
 sub d_line {
   if ( ref($_[0]) ) {
     my $self = shift @_;
-    return join($self->{DELIMITER},@_) . "\n";
+    return join($self->{DELIMITER},map {defined($_)?$_:''} @_) . "\n";
   } else {
-    return join("\t",@_);
+    return join("\t",map {defined($_)?$_:''} @_) . "\n";
   }
 }
 
