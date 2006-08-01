@@ -65,7 +65,7 @@ have been made, will be 0. After the first call to Read, this will return
 
 =item new([filename|filepointer],[enumerate])
 
-Creates a new Text::TabFile object. Takes optional parameter that is either
+Creates a new Text::Delimited object. Takes optional parameter that is either
 a filename or a globbed filehandle. Files specified by filename must 
 already exist.
 
@@ -99,22 +99,23 @@ This method returns undef if there is no more data to be read.
 
 =item setmode(encoding)
 
-Set the given encoding scheme on the tabfile to allow for reading files
+Set the given encoding scheme on the input file to allow for reading files
 encoded in standards other than ASCII.
 
 =head1 EXPORTABLE METHODS:
 
 For convienience, the following methods are exportable. These are handy 
-for quickly writing output tab files.
+for quickly writing output delimited files.
 
 =item d_join(@STUFF)
 
-Delimited Join. Returns the given array as a string joined with the current delimiter.
+Delimited Join. Returns the given array as a string joined with the
+current delimiter.
 
 =item d_line(@STUFF)
 
-Delimited Line. Returns the given array as a string joined with the current delimiter 
-and with newline appended.
+Delimited Line. Returns the given array as a string joined with the
+current delimiter and with newline appended.
 
 =head1 AUTHORSHIP:
 
