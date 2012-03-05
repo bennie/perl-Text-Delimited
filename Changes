@@ -2,8 +2,7 @@ Revision history for Perl extension Text::Delimited.
 
 VERSIONTAG  DATETAG
 
-	Tests updated to be compatible with perl 5.15. 
-	 (Swapped to Test::Simple to avoid using future bareword "plan")
+	Tests updated to Test::Simple.
 
 	Version leap to match automated build numbers.
         
