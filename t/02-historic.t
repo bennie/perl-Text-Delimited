@@ -1,7 +1,5 @@
-use Test;
-BEGIN { plan tests => 27 };
-
-### Load the module
+use Test::Simple tests => 27;
+use strict;
 
 use Text::Delimited;
 ok(1); 
