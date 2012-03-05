@@ -1,5 +1,12 @@
 Revision history for Perl extension Text::Delimited.
 
+VERSIONTAG  DATETAG
+
+	Tests updated to be compatible with perl 5.15. 
+	 (Swapped to Test::Simple to avoid using future bareword "plan")
+
+	Version leap to match automated build numbers.
+        
 2.00  2006/07/31
 
 	Provided non-capitalized method names to match Perl style as suggested
