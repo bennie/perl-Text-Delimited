@@ -119,9 +119,9 @@ current delimiter and with newline appended.
 
 =head1 AUTHORSHIP:
 
-    Text::Delimited v2.00 2006/06/31
+    Text::Delimited VERSIONTAG DATETAG
 
-    (c) 2004-2006, Phillip Pollard <bennie@cpan.org>
+    (c) 2004-YEARTAG, Phillip Pollard <bennie@cpan.org>
     Released under the Perl Artistic License
 
     I'd like to thank PetBlvd for sponsoring continued work on this module.
@@ -142,7 +142,7 @@ use Symbol;
 use 5.006;
 use strict;
 
-our $VERSION = '2.00';
+$Text::Delimited::VERSION = 'VERSIONTAG';
 
 ### Private mthods
 
