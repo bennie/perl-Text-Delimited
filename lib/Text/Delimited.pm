@@ -119,7 +119,7 @@ current delimiter and with newline appended.
 
 =head1 BUGS AND SOURCE
 
-	Bug tracking for this module: https://rt.cpan.org/Ticket/Display.html?id=?????
+	Bug tracking for this module: https://rt.cpan.org/Dist/Display.html?Name=Text-Delimited
 
 	Source hosting: http://www.github.com/bennie/perl-Text-Delimited
 
