@@ -1,8 +1,8 @@
-=head1 NAME:
+=head1 NAME
 
 Text::Delimited - Module for parsing delimited text files
 
-=head1 SYNOPSIS:
+=head1 SYNOPSIS
 
 Text::Delimited provides a programattical interface to data stored in 
 delimited text files. It is dependant upon the first row of the text 
@@ -13,7 +13,7 @@ After instancing, for each call to Read the next row's data is returned as
 a hash reference. The individual elements are keyed by their corresonding 
 column headings.
 
-=head1 USAGE:
+=head1 USAGE
 
 A short example of usage is detailed below. It opens a pipe delimited file 
 called 'infile.txt', reads through every row and prints out the data from 
@@ -102,7 +102,7 @@ This method returns undef if there is no more data to be read.
 Set the given encoding scheme on the input file to allow for reading files
 encoded in standards other than ASCII.
 
-=head1 EXPORTABLE METHODS:
+=head1 EXPORTABLE METHODS
 
 For convienience, the following methods are exportable. These are handy 
 for quickly writing output delimited files.
@@ -117,12 +117,21 @@ current delimiter.
 Delimited Line. Returns the given array as a string joined with the
 current delimiter and with newline appended.
 
-=head1 AUTHORSHIP:
+=head1 BUGS AND SOURCE
 
-    Text::Delimited VERSIONTAG DATETAG
+	Bug tracking for this module: https://rt.cpan.org/Ticket/Display.html?id=?????
+
+	Source hosting: http://www.github.com/bennie/perl-Text-Delimited
+
+=head1 VERSION
+
+    Text::Delimited vVERSIONTAG (DATETAG)
+
+=head1 COPYRIGHT
 
     (c) 2004-YEARTAG, Phillip Pollard <bennie@cpan.org>
-    Released under the Perl Artistic License
+
+=head1 AUTHORSHIP
 
     I'd like to thank PetBlvd for sponsoring continued work on this module.
     http://www.petblvd.com/
@@ -130,7 +139,7 @@ current delimiter and with newline appended.
     Additional contributions by Kristina Davis <krd@menagerie.tf>
     Based upon the original module by Andrew Barnett <abarnett@hmsonline.com>
 
-    Derived from Util::TabFile 1.9 2003/11/05
+    Originally derived from Util::TabFile 1.9 2003/11/05
     With permission granted from Health Market Science, Inc.
 
 =cut
