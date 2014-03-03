@@ -104,10 +104,14 @@ This method returns undef if there is no more data to be read.
 Set the given encoding scheme on the input file to allow for reading files
 encoded in standards other than ASCII.
 
+=back
+
 =head1 EXPORTABLE METHODS
 
 For convienience, the following methods are exportable. These are handy 
 for quickly writing output delimited files.
+
+=over
 
 =item d_join(@STUFF)
 
