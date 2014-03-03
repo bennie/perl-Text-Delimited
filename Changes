@@ -2,11 +2,11 @@ Revision history for Perl extension Text::Delimited.
 
 VERSIONTAG  DATETAG
 
-	Automated build
+	Automated build, now properly constructing meta data.
 
-	Corrected POD error
+	Corrected POD errors
 
-	Adding POD test
+	Adding a POD test
 
 2.07  2014/02/24
 
