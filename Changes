@@ -2,6 +2,14 @@ Revision history for Perl extension Text::Delimited.
 
 VERSIONTAG  DATETAG
 
+	Automated build
+
+	Corrected POD error
+
+	Adding POD test
+
+2.07  2014/02/24
+
 	Meta information updated
 	
 	Added LICENSE file to distribution
