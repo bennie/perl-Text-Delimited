@@ -139,6 +139,12 @@ current delimiter and with newline appended.
 
     (c) 2004-YEARTAG, Phillip Pollard <bennie@cpan.org>
 
+=head1 LICENSE
+
+This source code is released under the "Perl Artistic License 2.0," the text of
+which is included in the LICENSE file of this distribution. It may also be
+reviewed here: http://opensource.org/licenses/artistic-license-2.0
+
 =head1 AUTHORSHIP
 
     I'd like to thank PetBlvd for sponsoring continued work on this module.
