@@ -1,0 +1,13 @@
+### Config
+
+$module = 'Text::Delimited';
+
+$author  = 'Phil Pollard <bennie@cpan.org>';
+$license = 'artistic_2';
+
+$abstract    = 'Delimited Text Processing';
+$description = $abstract;
+
+$perl_ver = '5.006';
+
+%requires = ( 'Test::Simple' => '0' );
