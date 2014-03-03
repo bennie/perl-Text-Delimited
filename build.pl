@@ -98,6 +98,7 @@ WriteMakefile(
                           version => '$version'
                      }
                 },
+                release_status => 'stable',
                 requires  => {perl => '$perl_ver'},
                 resources => {
                     repository => {
@@ -123,56 +124,6 @@ close MAKEFILE;
 print `perl Makefile.PL`;
 print `make distmeta`;
 
-### Build META.json
-
-unless ( -f $distdir.'/META.json' ) {
-  my $distmeta = {
-
-    # Required
-    abstract => $abstract,
-    author   => [ $author ],
-    license  => [ $license ],
-    name     => $path_chunk,
-    version  => $version,
-
-    # optional
-    dynamic_config => 1,
-    'meta-spec' => { version => '2', url => 'http://search.cpan.org/perldoc?CPAN::Meta::Spec' },
-    generated_by => "CPAN::Meta version $CPAN::Meta::VERSION",
-
-    # 2.0 only stuff
-    description =>  $description,
-    release_status => 'stable',
-
-    prereqs => {
-      runtime => {
-        requires => \%requires,
-        recommends => { },
-      },
-      build => {
-        requires => \%requires,
-      }
-    },
-    resources => {
-      license    => [ 'http://dev.perl.org/licenses/' ],
-      bugtracker => { web => $bug },
-      repository => { web => $repo , type => 'git', url => $git },
-    },
-  };
-
-  $distmeta->{prereqs}->{runtime}->{requires}->{perl} = $perl_ver;
-
-  my $meta = CPAN::Meta->create($distmeta);
-  print "Generating META.json on my own.\n";
-  $meta->save($distdir.'/META.json');
-
-  print "Adding META.json to the MANIFEST\n";
-  open MANIFEST, '>>', $distdir.'/MANIFEST';
-  print MANIFEST "META.json\nMakefile.PL";
-  close MANIFEST;
-
-}
-
 ### Updating the tags
 
 print  "\nUpdating DATETAG -> $date\n";
@@ -189,6 +140,11 @@ unlink($distdir.'.tar')    if -f $distdir.'.tar';
 unlink($distdir.'.tar.gz') if -f $distdir.'.tar.gz';
 
 system "tar cvf $distdir.tar $distdir && gzip --best $distdir.tar";
+
+### META.json check
+
+warn "\nSomething is odd! We didn't build a META.json\n\n"
+  unless -f $distdir.'/META.json';
 
 ### Cleanup
 
