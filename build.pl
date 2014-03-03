@@ -1,10 +1,18 @@
 #!/usr/bin/env perl
 
-require CPAN::Meta::YAML; # Do both YAML and JSON
-
 use Data::Dumper;
-use CPAN::Meta;
 use strict;
+
+# These will be necessary for Make Maker to make the module with proper files.
+require CPAN::Meta;
+require CPAN::Meta::Converter;
+require CPAN::Meta::YAML;
+require ExtUtils::MakeMaker;
+
+print "Using ExtUtils::MakeMaker ($ExtUtils::MakeMaker::VERSION)\n";
+print "Using CPAN::Meta ($CPAN::Meta::VERSION)\n";
+
+die "You need a modern version of ExtUtils::MakeMaker." unless $ExtUtils::MakeMaker::VERSION > 6;
 
 ### Config
 
@@ -29,9 +37,13 @@ my $bug  = 'https://rt.cpan.org/Dist/Display.html?Name='.$path_chunk;
 my $repo = 'http://github.com/bennie/perl-' . $path_chunk;
 my $git  = 'git://github.com/bennie/perl-'.$path_chunk.'.git';
 
+my $sourcefile = 'lib/' . $module . '.pm';
+$sourcefile =~ s/::/\//g;
+
 my $require_text = Dumper(\%requires);
 $require_text =~ s/\$VAR1 = //;
 $require_text =~ s/;$//;
+1 while chomp($require_text);
 
 ### Bump the version if asked
 
@@ -78,27 +90,26 @@ WriteMakefile(
   ( \$ExtUtils::MakeMaker::VERSION < 6.46
         ? ()
         : ( META_MERGE => {
+                'meta-spec' => { version => 2 },
+                no_index => {directory => [qw/t/]},
+                provides => {
+                     '$module' => {
+                          file    => '$sourcefile',
+                          version => '$version'
+                     }
+                },
                 requires  => {perl => '$perl_ver'},
                 resources => {
-                    # homepage => 'http://FIXME.org',
-                    # license  => 'http://dev.perl.org/licenses/',
-                    # MailingList => 'http://FIXME',
                     repository => {
                         type => 'git',
                         url  => '$git',
                         web  => '$repo',
                     },
                     bugtracker => {
-                        # mailto => '...',
                         web => '$bug',
                     },
 
                 },
-                no_index => {directory => [qw/t/]},
-            },
-            META_ADD => {
-                build_requires     => {},
-                configure_requires => {}
             },
         )
     )
@@ -184,6 +195,8 @@ system "tar cvf $distdir.tar $distdir && gzip --best $distdir.tar";
 unlink('Makefile');
 unlink('Makefile.old');
 unlink('Makefile.PL');
+unlink('MYMETA.json');
+unlink('MYMETA.yml');
 
 print "\nDONE!\n";
 
