@@ -9,4 +9,3 @@ t/01-load.t
 t/02-historic.t
 t/03-parse.t
 t/test.txt
-META.yml
