@@ -39,6 +39,8 @@ Other informational methods are also available. They are listed blow:
 
 =head1 METHODS:
 
+=over
+
 =item close()
 
 Closes the file or connection, and cleans up various bits.
@@ -116,6 +118,8 @@ current delimiter.
 
 Delimited Line. Returns the given array as a string joined with the
 current delimiter and with newline appended.
+
+=back
 
 =head1 BUGS AND SOURCE
 
