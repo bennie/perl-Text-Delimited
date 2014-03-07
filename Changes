@@ -2,6 +2,10 @@ Revision history for Perl extension Text::Delimited.
 
 VERSIONTAG  DATETAG
 
+	Now using warnings.
+
+2.08  2014/03/03
+
 	Automated build, now properly constructing meta data.
 
 	Corrected POD errors
