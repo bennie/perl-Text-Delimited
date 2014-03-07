@@ -10,4 +10,4 @@ $description = $abstract;
 
 $perl_ver = '5.006';
 
-%requires = ( 'Test::Simple' => '0' );
+%requires = ( 'Test::Simple' => '0', 'Test::More' => 0, 'Symbol' => 0 );
