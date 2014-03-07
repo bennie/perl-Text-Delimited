@@ -8,6 +8,6 @@ $license = 'artistic_2';
 $abstract    = 'Delimited Text Processing';
 $description = $abstract;
 
-$perl_ver = '5.006';
+$perl_ver = '5.006001';
 
 %requires = ( 'Test::Simple' => '0', 'Test::More' => 0, 'Symbol' => 0 );
