@@ -163,6 +163,7 @@ package Text::Delimited;
 use Symbol;
 
 use 5.006;
+use warnings;
 use strict;
 
 $Text::Delimited::VERSION = 'VERSIONTAG';
