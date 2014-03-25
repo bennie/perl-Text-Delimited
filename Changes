@@ -34,6 +34,8 @@ VERSIONTAG  DATETAG
 	Added initialization checks on exported methods to avoid superfluous
 	 warnings generated when -w is used.
 
+	Handle blank lines at the end of a file gracefully as per RT #12006
+
 	Added credit to PetBlvd (http://www.petblvd.com) for the sponsorship
 	 of further development.
 
