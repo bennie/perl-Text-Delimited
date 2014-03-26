@@ -2,6 +2,10 @@ Revision history for Perl extension Text::Delimited.
 
 VERSIONTAG  DATETAG
 
+	Including credit for the RT on the 2.00 change info
+
+2.09  2014/03/07
+
 	Now using warnings.
 
 2.08  2014/03/03
