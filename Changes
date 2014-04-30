@@ -2,6 +2,11 @@ Revision history for Perl extension Text::Delimited.
 
 VERSIONTAG  DATETAG
 
+	Using GNU TAR now. The previous release had PAX headers in the tar file.
+	Build scripts now automatically configure minium perl version.
+
+2.10  2014/03/26
+
 	Including credit for the RT on the 2.00 change info
 
 2.09  2014/03/07
