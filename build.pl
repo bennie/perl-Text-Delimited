@@ -170,7 +170,7 @@ print "\n";
 unlink($distdir.'.tar')    if -f $distdir.'.tar';
 unlink($distdir.'.tar.gz') if -f $distdir.'.tar.gz';
 
-system "gtar cvf $distdir.tar $distdir && gzip --best $distdir.tar";
+system "tar cvf $distdir.tar $distdir && gzip --best $distdir.tar";
 
 ### META.json check
 
