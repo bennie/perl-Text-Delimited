@@ -177,8 +177,12 @@ sub DESTROY {
 sub _line {
   my $self = shift @_;
   $self->{CURRENT_LINE} = readline($self->{FP});
-  $self->{CURRENT_LINE} =~ s/[\r\n]+$//;
-  $self->{CURRENT_DATA} = [ split /\Q$self->{DELIMITER}\E/o, $self->{CURRENT_LINE} ];
+  if ( defined $self->{CURRENT_LINE} ) {
+    $self->{CURRENT_LINE} =~ s/[\r\n]+$// if defined $self->{CURRENT_LINE};
+    $self->{CURRENT_DATA} = [ split /\Q$self->{DELIMITER}\E/o, $self->{CURRENT_LINE} ];
+  } else {
+    $self->{CURRENT_DATA} = [ ];
+  }
   $self->{LINE_NUMBER}++;
   return $self->{CURRENT_DATA};
 }
